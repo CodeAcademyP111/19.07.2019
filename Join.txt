@@ -1,0 +1,101 @@
+Create database Cource
+
+use Cource;
+
+create table GroupType(
+	Id int primary key identity,
+	Tname nvarchar(100) not null
+)
+
+create table Groups(
+	Id int primary key identity,
+	Gname nvarchar(100) not null,
+	GroupTypeId int references GroupType(Id)
+)
+
+create table City(
+	Id int primary key identity,
+	Cname nvarchar(100) not null
+)
+
+create table Student(
+	Id int primary key identity,
+	Name nvarchar(100) not null,
+	Surname nvarchar(100),
+	CityId int references City(Id),
+	GroupsId int references Groups(Id)
+)
+Select * from City
+Select * from Groups
+
+
+Select Name,Surname,Cname 'City',Gname 'Group',Tname 'Group Type' from Student as st
+
+join City as c
+on st.CityId=c.Id
+
+join Groups as gr
+on st.GroupsId=gr.Id
+
+join GroupType as grt
+on gr.GroupTypeId=grt.Id
+
+Select * from Student
+Select * from City
+
+Select * from Student as s
+inner join City as c
+on s.CityId=c.Id
+
+Select * from Student as s
+left outer join City as c
+on s.CityId=c.Id
+
+
+Select * from Student as s
+right outer join City as c
+on s.CityId=c.Id
+
+Select * from Student as s
+full outer join City as c
+on s.CityId=c.Id
+
+Create table Staff(
+	Id int primary key identity,
+	StaffName nvarchar(100),
+	Depending int
+)
+
+select * from Staff
+
+select s1.StaffName,s2.StaffName 'Depending' from Staff as s1
+left join Staff as s2
+on s1.Depending=s2.Id
+
+create table Grade(
+	Id int primary key identity,
+	Letter char,
+	MinGrade int,
+	MaxGrade int
+)
+
+Alter table Student
+Add Mark int
+
+Select Name,Surname,Mark,Letter 'Result' from Student
+join Grade
+on Student.Mark Between Grade.MinGrade And Grade.MaxGrade
+
+
+create table Size(
+	Id int primary key identity,
+	Name nvarchar(5)
+)
+
+create table Dress(
+	Id int primary key identity,
+	Name nvarchar(100)
+)
+
+Select Dress.Name 'Dress',Size.Name 'Size'  from Dress
+cross join Size
