@@ -8,3 +8,5 @@ Tapshiriq:
 Zavod uchun database qurmalisiniz - Vezifeler olacaq, Ishchiler olacaq, Shobeler olacaq,Shobeler arasinda self join(yeni bir shobe bir neche alt shobeye bolune biler).
 
 Elaveler de ede bilersiz
+
+tapshirigi hem dbdesignerde, hem de sql sorgularla yazib atmalisiniz
